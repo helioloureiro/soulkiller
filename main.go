@@ -69,7 +69,7 @@ func readStuff(scanner *bufio.Scanner) {
 			shellExec(reboot, "-f")
 		}
 
-		if grep("nonono", logLine) {
+		if grep("kwin_wayland_drm: Presentation failed! Resource temporarily unavailable", logLine) {
 			fmt.Println("Wayland crash detected:", logLine)
 			fmt.Println("Restart SDDM")
 			shellExec(systemctl, "restart", "--no-block", "sddm")
