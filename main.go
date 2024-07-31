@@ -27,7 +27,8 @@ func main() {
 	checkError(err)
 
 	fmt.Println("journalctl:", journalctl)
-	fmt.Println("Reboot:", reboot)
+	fmt.Println("reboot:", reboot)
+	fmt.Println("systemctl:", systemctl)
 
 	monitor := exec.Command("journalctl", "-b", "-f")
 	stdout, err := monitor.StdoutPipe()
