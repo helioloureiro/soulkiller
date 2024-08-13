@@ -74,6 +74,13 @@ func readStuff(scanner *bufio.Scanner) {
 			fmt.Println("Restart SDDM")
 			shellExec(systemctl, "restart", "--no-block", "sddm")
 		}
+
+		if grep("ESR 0x405848=0x80000000", logLine) {
+			fmt.Println("Wayland crash detected:", logLine)
+			fmt.Println("Restart SDDM")
+			shellExec(systemctl, "restart", "--no-block", "sddm")
+			shellExec(systemctl, "restart", "--no-block", "sddm")
+		}
 		counter--
 		if counter == 0 {
 			fmt.Println("soulkiller stills alive")
