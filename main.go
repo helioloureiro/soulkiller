@@ -75,7 +75,7 @@ func readStuff(scanner *bufio.Scanner) {
 			shellExec(systemctl, "restart", "--no-block", "sddm")
 		}
 
-		if grep("ESR 0x405848=0x80000000", logLine) {
+		if grep("Graphics Exception: ChID", logLine) {
 			fmt.Println("Wayland crash detected:", logLine)
 			fmt.Println("Restart SDDM")
 			shellExec(systemctl, "restart", "--no-block", "sddm")
